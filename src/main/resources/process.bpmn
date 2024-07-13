@@ -13,10 +13,6 @@
       <bpmn:incoming>Flow_1yqrpmu</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1yqrpmu" sourceRef="Activity_1ia3ycg" targetRef="Event_0gcfwo4" />
-    <bpmn:userTask id="Activity_1ia3ycg" name="Overthrow the monarchy">
-      <bpmn:incoming>Flow_03bnf4f</bpmn:incoming>
-      <bpmn:outgoing>Flow_1yqrpmu</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:exclusiveGateway id="Gateway_1mzha7u" name="Where are you going?">
       <bpmn:incoming>Flow_1ng2mqj</bpmn:incoming>
       <bpmn:outgoing>Flow_1tstzud</bpmn:outgoing>
@@ -45,6 +41,25 @@
       <bpmn:incoming>Flow_1tstzud</bpmn:incoming>
       <bpmn:outgoing>Flow_0wyn9c9</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:userTask id="Activity_1ia3ycg" name="Overthrow the monarchy">
+      <bpmn:incoming>Flow_03bnf4f</bpmn:incoming>
+      <bpmn:outgoing>Flow_1yqrpmu</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:boundaryEvent id="Event_0lg0avr" cancelActivity="false" attachedToRef="Activity_1ia3ycg">
+      <bpmn:outgoing>Flow_1jydb2j</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_0h4ryih">
+        <bpmn:timeCycle xsi:type="bpmn:tFormalExpression">R/PT1M</bpmn:timeCycle>
+      </bpmn:timerEventDefinition>
+    </bpmn:boundaryEvent>
+    <bpmn:sequenceFlow id="Flow_1jydb2j" sourceRef="Event_0lg0avr" targetRef="Activity_1etvg84" />
+    <bpmn:userTask id="Activity_1etvg84" name="send letter back home to your wife">
+      <bpmn:incoming>Flow_1jydb2j</bpmn:incoming>
+      <bpmn:outgoing>Flow_1d1ex25</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_00xxrwb" name="letter sent">
+      <bpmn:incoming>Flow_1d1ex25</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1d1ex25" sourceRef="Activity_1etvg84" targetRef="Event_00xxrwb" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Lafayette-process">
@@ -81,6 +96,18 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1tod82x_di" bpmnElement="Activity_1cmbl1s">
         <dc:Bounds x="590" y="207" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_02mcpaj_di" bpmnElement="Activity_1etvg84">
+        <dc:Bounds x="980" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_00xxrwb_di" bpmnElement="Event_00xxrwb">
+        <dc:Bounds x="1132" y="102" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1126" y="145" width="49" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0tjwf7x_di" bpmnElement="Event_0lg0avr">
+        <dc:Bounds x="892" y="189" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="SequenceFlow_1fp17al_di" bpmnElement="SequenceFlow_1fp17al">
         <di:waypoint x="215" y="247" />
@@ -121,6 +148,15 @@
         <di:waypoint x="690" y="120" />
         <di:waypoint x="780" y="120" />
         <di:waypoint x="780" y="222" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jydb2j_di" bpmnElement="Flow_1jydb2j">
+        <di:waypoint x="910" y="189" />
+        <di:waypoint x="910" y="120" />
+        <di:waypoint x="980" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1d1ex25_di" bpmnElement="Flow_1d1ex25">
+        <di:waypoint x="1080" y="120" />
+        <di:waypoint x="1132" y="120" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>

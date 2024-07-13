@@ -1,6 +1,7 @@
 package ru.alina.comunda.example;
 
 
+import org.camunda.bpm.engine.delegate.BpmnError;
 import org.camunda.bpm.engine.delegate.DelegateExecution;
 import org.camunda.bpm.engine.delegate.JavaDelegate;
 import org.springframework.stereotype.Component;
@@ -20,6 +21,8 @@ public class ReserveSeatOnBoat implements JavaDelegate {
         }
         else if (moneyDouble >= 5000.00) {
             ticketType = "Business class";
+        } else if (moneyDouble<=10.00) {
+            throw new BpmnError("Fail_overboard", "a cheap ticket has led to a small wave throwing you overboard");
         }
 
         delegateExecution.setVariable("ticketType", ticketType);
